@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactorioServerManager.AppMo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactorioServerManager.DataStore", "FactorioServerManager.DataStore\FactorioServerManager.DataStore.csproj", "{670ACDEA-17D6-443C-BC3D-888FDCEACEAB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactorioServerManager.WebApi", "FactorioServerManager.WebApi\FactorioServerManager.WebApi.csproj", "{053E0FA3-4743-41D6-AD3C-5D896F6A81DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorioServerManager.WebUi", "FactorioServerManager.WebUi\FactorioServerManager.WebUi.csproj", "{CE8223E2-8587-4D00-A1D2-AC9B2C3AA5EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{670ACDEA-17D6-443C-BC3D-888FDCEACEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{670ACDEA-17D6-443C-BC3D-888FDCEACEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{670ACDEA-17D6-443C-BC3D-888FDCEACEAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{053E0FA3-4743-41D6-AD3C-5D896F6A81DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{053E0FA3-4743-41D6-AD3C-5D896F6A81DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{053E0FA3-4743-41D6-AD3C-5D896F6A81DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{053E0FA3-4743-41D6-AD3C-5D896F6A81DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE8223E2-8587-4D00-A1D2-AC9B2C3AA5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE8223E2-8587-4D00-A1D2-AC9B2C3AA5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE8223E2-8587-4D00-A1D2-AC9B2C3AA5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE8223E2-8587-4D00-A1D2-AC9B2C3AA5EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
