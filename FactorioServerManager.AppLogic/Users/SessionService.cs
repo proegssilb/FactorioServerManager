@@ -35,5 +35,10 @@ namespace FactorioServerManager.AppLogic.Users
         {
             _currentSessionId.Value = sessionId;
         }
+
+        public void UnloadCurrentSesion()
+        {
+            _currentSessionId.Value = "";
+        }
     }
 }

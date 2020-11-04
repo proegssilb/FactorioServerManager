@@ -9,8 +9,8 @@ export function LoginPip() {
     if (error) return <p>Error :(</p>;
     const currentLogin = data.auth.whoAmI;
     if (currentLogin === "") {
-        return <p>Please <a href="https://xendev.us.auth0.com/login">login here.</a></p>;
+        return <p><a href="/Account/Login">Login</a></p>;
     } else {
-        return <p>You are logged in as {currentLogin}</p>;
+        return <p>You are logged in as {currentLogin}. <a href="/Account/Logout">Logout</a></p>;
     }
 }

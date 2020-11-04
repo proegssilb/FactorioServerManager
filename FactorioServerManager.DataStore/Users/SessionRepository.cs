@@ -61,5 +61,12 @@ namespace FactorioServerManager.DataStore.Users
             });
             redisDb.KeyExpire(redisKey, DateTime.Now.Add(SessionExpiration));
         }
+
+        public void DeleteSession(string sessionId)
+        {
+            IDatabase redisDb = _redisMultiplexer.GetDatabase();
+            string redisKey = $"{SessionKeyPrefix}{sessionId}";
+            redisDb.KeyDelete(redisKey);
+        }
     }
 }

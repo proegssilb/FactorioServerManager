@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace FactorioServerManager.AppModel.Users
 {
@@ -8,8 +7,10 @@ namespace FactorioServerManager.AppModel.Users
     {
         User? WhoAmI();
         void SetAnonymousSession(string? sessionId = null);
-        void SetAuthenticatedSession(string sessionId, object jwt);
+        void SetAuthenticatedSession(string sessionId, JwtSecurityToken jwt);
+        void SetAuthenticatedSession(string sessionId, ClaimsPrincipal user);
         bool IsSessionReady();
         bool IsSessionReady(string expectedSessionId);
+        void LogoutSession();
     }
 }

@@ -9,5 +9,6 @@ namespace FactorioServerManager.AppModel.Users
         void SetCurrentSessionId(string sessionId);
         string GetCurrentSessionId();
         RawSession? GetCurrentSession();
+        void UnloadCurrentSesion();
     }
 }

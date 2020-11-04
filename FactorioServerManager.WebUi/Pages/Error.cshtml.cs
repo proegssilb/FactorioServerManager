@@ -14,7 +14,9 @@ namespace FactorioServerManager.WebUi.Pages
     {
         private readonly ILogger<ErrorModel> _logger;
 
-        public ErrorModel(ILogger<ErrorModel> logger)
+#pragma warning disable CS8618 // There's two framework properties that AutoComplete won't tell me about.
+        public ErrorModel(ILogger<ErrorModel> logger) : base()
+#pragma warning restore CS8618
         {
             _logger = logger;
         }

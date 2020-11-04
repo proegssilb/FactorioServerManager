@@ -6,7 +6,8 @@ namespace FactorioServerManager.AppLogic.Users
 {
     public class Auth0Secrets
     {
-        public string Auth0ClientId { get; set; } = "";
-        public string Auth0ClientSecret { get; set; } = "";
+        public string ClientId { get; set; } = "";
+        public string ClientSecret { get; set; } = "";
+        public string Domain { get; set; } = "";
     }
 }

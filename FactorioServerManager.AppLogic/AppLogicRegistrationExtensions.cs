@@ -1,9 +1,8 @@
-﻿using FactorioServerManager.AppLogic.Users;
+﻿using FactorioServerManager.AppLogic.Games;
+using FactorioServerManager.AppLogic.Users;
+using FactorioServerManager.AppModel.Games;
 using FactorioServerManager.AppModel.Users;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FactorioServerManager.AppLogic
 {
@@ -14,6 +13,7 @@ namespace FactorioServerManager.AppLogic
             serviceCollection.AddSingleton<IAuthService, AuthService>();
             serviceCollection.AddSingleton<IUserService, UserService>();
             serviceCollection.AddSingleton<ISessionService, SessionService>();
+            serviceCollection.AddSingleton<IFactorioGameService, FactorioGameService>();
             return serviceCollection;
         }
     }

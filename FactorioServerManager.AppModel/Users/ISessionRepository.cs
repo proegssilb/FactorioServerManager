@@ -8,5 +8,6 @@ namespace FactorioServerManager.AppModel.Users
     {
         void StoreSession(RawSession sessionToStore);
         RawSession? LoadSession(string SessionId);
+        void DeleteSession(string sessionId);
     }
 }

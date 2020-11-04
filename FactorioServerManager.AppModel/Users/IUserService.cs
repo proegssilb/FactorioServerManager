@@ -6,5 +6,6 @@ namespace FactorioServerManager.AppModel.Users
     {
         User? GetUser(string userIdentifier);
         IReadOnlyList<User> GetUsers(IEnumerable<string> userIdentifiers);
+        void SaveUser(User currentUser);
     }
 }

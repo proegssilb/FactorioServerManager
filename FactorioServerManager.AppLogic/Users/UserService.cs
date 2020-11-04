@@ -1,6 +1,7 @@
 ﻿using FactorioServerManager.AppModel.Users;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FactorioServerManager.AppLogic.Users
@@ -18,12 +19,17 @@ namespace FactorioServerManager.AppLogic.Users
 
         public User? GetUser(string userIdentifier)
         {
-            throw new NotImplementedException();
+            return GetUsers(new[] { userIdentifier }).FirstOrDefault();
         }
 
         public IReadOnlyList<User> GetUsers(IEnumerable<string> userIdentifiers)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetUsers(userIdentifiers);
+        }
+
+        public void SaveUser(User userToSave)
+        {
+            _userRepository.SaveUser(userToSave);
         }
     }
 }

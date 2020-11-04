@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,7 +6,10 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <UserSecretsId>0feda0b0-e2f3-4c5c-820f-cdf631d5d6f9</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +33,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FactorioServerManager.AppLogic\FactorioServerManager.AppLogic.csproj" />
-    <ProjectReference Include="..\FactorioServerManager.AppModel\FactorioServerManager.AppModel.csproj" />
     <ProjectReference Include="..\FactorioServerManager.DataStore\FactorioServerManager.DataStore.csproj" />
   </ItemGroup>
 
