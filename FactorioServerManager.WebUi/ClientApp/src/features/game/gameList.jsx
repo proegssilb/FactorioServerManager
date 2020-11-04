@@ -1,5 +1,5 @@
-﻿import React, { Component } from 'react';
-import { Switch, Link, Route, useRouteMatch, useParams } from "react-router-dom";
+﻿import React from 'react';
+import { Switch, Link, Route, useRouteMatch } from "react-router-dom";
 import { GameDetails } from './gameDetails';
 import { useQuery, gql } from '@apollo/client';
 
@@ -10,15 +10,14 @@ const GAME_LIST = gql`
 `
 
 function component(props, url, data) {
-    if (!data) return <div></div>;
+    if (!data) return <div><p>Game data failed to load.</p></div>;
 
-    const listItems = data.games.map(i => (<li><Link to={"/g/" + i.id}>{ i.name }</Link></li>));
+    const listItems = data.games.map(i => (<li key={i.id}><Link to={"/g/" + i.id}>{ i.name }</Link></li>));
     return (<ol className="game-list"> {listItems} </ol>)
 }
 
 export function GameList(props) {
     let { url } = useRouteMatch();
-    let { gameId } = useParams();
     let { loading, error, data } = useQuery(GAME_LIST);
 
     if (loading) return <div><p>Loading...</p></div>;
@@ -28,11 +27,11 @@ export function GameList(props) {
 
         <div>
             <Switch>
-                <Route path={url + "/:gameId"} >
-                    <GameDetails id={gameId} gameData={ data.games }/>
+                <Route path="/g/:gameId" >
+                    <GameDetails gameData={ data.games }/>
                 </Route>
                 <Route path={url}>
-                    {component(props, url, loading, error, data)}
+                    {component(props, url, data)}
                 </Route>
             </Switch>
         </div >

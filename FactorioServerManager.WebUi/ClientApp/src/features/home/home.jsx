@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 import { GameList } from '../game/gameList';
 import { EventList } from '../calendar/eventList';
 

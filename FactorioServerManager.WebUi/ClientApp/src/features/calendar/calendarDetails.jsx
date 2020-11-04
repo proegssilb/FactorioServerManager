@@ -1,5 +1,5 @@
-﻿import React, { Component } from 'react';
-import { Switch, Link, Route, useRouteMatch, useParams } from "react-router-dom";
+﻿import React from 'react';
+import { Switch, Route, useRouteMatch, useParams } from "react-router-dom";
 import { EventList } from './eventList';
 import { EventDetails } from './eventDetails';
 

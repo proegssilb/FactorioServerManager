@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 import { Switch, Link, Route, useRouteMatch, useParams } from "react-router-dom";
 import { CalendarDetails } from './calendarDetails';
 
