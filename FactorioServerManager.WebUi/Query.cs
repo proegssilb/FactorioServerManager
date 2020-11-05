@@ -9,7 +9,6 @@ namespace FactorioServerManager.WebUi
 {
     public class Query
     {
-        public Greetings GetGreetings() => new Greetings();
         public AuthQuery GetAuth([Service] AuthQuery authQuery) => authQuery;
         public IReadOnlyList<FactorioGame> GetGames([Service] IFactorioGameService gameService) => gameService.ListGames();
     }

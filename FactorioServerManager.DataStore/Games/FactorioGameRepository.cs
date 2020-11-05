@@ -24,21 +24,44 @@ namespace FactorioServerManager.DataStore.Games
         public IEnumerable<FactorioGame> ListGames(User currentUser, int pageSize, int page)
         {
             const string query = @"
-    SELECT FactorioGames.Id, FactorioGames.Name, FactorioGames.Description
-    FROM FactorioGames
-        INNER JOIN game_members ON (FactorioGames.id = game_members.gameid)
-        INNER JOIN Users ON (users.id = game_members.userid)
+    SELECT fg.Id, fg.Name, fg.Description, gm2.Id, gm2.GameId, gm2.UserId, gm2.MemberType, u2.Id, u2.Identifier, u2.Name, u2.Icon
+    FROM FactorioGames fg
+        INNER JOIN game_members gm1 ON (fg.id = gm1.gameid)
+        INNER JOIN Users u1 ON (u1.id = gm1.userid)
+        LEFT OUTER JOIN game_members gm2 ON (fg.id = gm2.gameid)
+        INNER JOIN Users u2 ON (gm2.userid = u2.id)
     WHERE 
-        users.identifier = @userId
-    GROUP BY FactorioGames.Id, FactorioGames.Name, FactorioGames.Description
+        u1.identifier = @userId
+    GROUP BY fg.Id, fg.Name, fg.Description, gm2.Id, gm2.GameId, gm2.UserId, gm2.MemberType, u2.Id, u2.Identifier, u2.Name, u2.Icon
     LIMIT @pageSize
     OFFSET @start
 ";
+            Dictionary<long, FactorioGame> gamesFound = new Dictionary<long, FactorioGame>();
+
             using DbConnection dbconn = _connectionProvider.GetDbConnection();
 
             try
             {
-                return dbconn.Query<FactorioGame>(query, new { userId = currentUser.Identifier, pageSize, start = page * pageSize });
+                return dbconn.Query<FactorioGame, GameUserMap, User, FactorioGame>(query, (game, userMap, user) =>
+                {
+                    if (!gamesFound.TryGetValue(game.Id, out var foundGame))
+                    {
+                        gamesFound[game.Id] = game;
+                        foundGame = game;
+                    }
+                    if (user != null)
+                    {
+                        if (userMap?.MemberType == GameMemberTypes.Owner)
+                        {
+                            foundGame.Owners.Add(user);
+                        }
+                        else
+                        {
+                            foundGame.Players.Add(user);
+                        }
+                    }
+                    return foundGame;
+                }, new { userId = currentUser.Identifier, pageSize, start = page * pageSize });
             }
             catch (Exception exc)
             {

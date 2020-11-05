@@ -1,9 +1,7 @@
 ﻿using Dapper;
 using FactorioServerManager.AppModel.Users;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Data.Common;
 
 namespace FactorioServerManager.DataStore.Users
@@ -19,7 +17,7 @@ namespace FactorioServerManager.DataStore.Users
         public IReadOnlyList<User> GetUsers(IEnumerable<string> userIdentifiers)
         {
             const string query = @"
-SELECT Identifier, Name, Icon 
+SELECT Id, Identifier, Name, Icon 
 FROM Users
 WHERE Identifier=ANY(@ids)
 ";

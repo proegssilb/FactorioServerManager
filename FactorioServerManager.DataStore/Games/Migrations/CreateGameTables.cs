@@ -56,4 +56,14 @@ namespace FactorioServerManager.DataStore.Games.Migrations
             Delete.Table("game_players");
         }
     }
+
+    [Migration(2020, 11, 04, 5000, 100)]
+    public class AddIdentityToGameMembers : AutoReversingMigration
+    {
+        public override void Up()
+        {
+            Alter.Table("game_members")
+                .AddColumn("id").AsInt64().Identity();
+        }
+    }
 }

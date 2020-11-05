@@ -115,7 +115,7 @@ namespace FactorioServerManager.AppLogic.Users
                     }
                 }
 
-                currentUser = new User(userId, displayName ?? email ?? "", userIcon);
+                currentUser = new User(null, userId, displayName ?? email ?? "", userIcon);
             }
 
             _sessionRepository.StoreSession(new RawSession(sessionId, currentUser.Identifier));

@@ -11,7 +11,10 @@ export function GameDetails(props) {
 
     console.log("Game details game data: ", games);
     console.log("Game details props:", props);
-    if (!game) return <div><p>Could not find game { gameId }</p></div>;
+    if (!game) return <div><p>Could not find game {gameId}</p></div>;
+
+    const ownerList = game.owners.map(o => <li key={o.id}>{o.displayName}</li>);
+    const playerList = game.players.map(p => <li key={p.id}>{p.displayName}</li>)
 
     return (
         <div>
@@ -21,11 +24,11 @@ export function GameDetails(props) {
             <button>Start Game</button>
             <h2>Owners</h2>
             <ul>
-                <li>Feature not implemented</li>
+                {ownerList}
             </ul>
             <h2>Players</h2>
             <ul>
-                <li>Feature not implemented</li>
+                {playerList}
             </ul>
             <h2>Schedule</h2>
             <Link to="/c/42">Feature not implemented</Link>

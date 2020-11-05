@@ -10,18 +10,18 @@ namespace FactorioServerManager.AppModel.Games
         public long Id { get; } = -1;
         public string Name { get; }
         public string Description { get; }
-        public IReadOnlyList<Calendar> GameSchedule { get; }
-        public IReadOnlyList<User> Owners { get; }
-        public IReadOnlyList<User> Players { get; }
+        public IList<Calendar> GameSchedule { get; }
+        public IList<User> Owners { get; }
+        public IList<User> Players { get; }
 
-        public FactorioGame(string name, string description, IReadOnlyList<Calendar>? gameSchedule = null, IReadOnlyList<User>? owners = null, IReadOnlyList<User>? players = null, int? id = null)
+        public FactorioGame(string name, string description, IList<Calendar>? gameSchedule = null, List<User>? owners = null, IList<User>? players = null, int? id = null)
         {
             Id = id ?? -1;
             Name = name;
             Description = description;
-            GameSchedule = gameSchedule ?? Array.Empty<Calendar>();
-            Owners = owners ?? Array.Empty<User>();
-            Players = players ?? Array.Empty<User>();
+            GameSchedule = gameSchedule ?? new List<Calendar>();
+            Owners = owners ?? new List<User>();
+            Players = players ?? new List<User>();
         }
 
         public FactorioGame(long id, string name, string description)
@@ -30,8 +30,8 @@ namespace FactorioServerManager.AppModel.Games
             Name = name;
             Description = description;
             GameSchedule = Array.Empty<Calendar>();
-            Owners = Array.Empty<User>();
-            Players = Array.Empty<User>();
+            Owners = new List<User>();
+            Players = new List<User>();
         }
     }
 }

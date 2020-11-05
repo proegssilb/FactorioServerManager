@@ -39,7 +39,7 @@ namespace FactorioServerManager.AppLogic.Games
             {
                 return new List<FactorioGame>();
             }
-            return _gameRepository.ListGames(currentUser, pageSize, page).ToList();
+            return _gameRepository.ListGames(currentUser, pageSize, page).Distinct().ToList();
         }
     }
 }

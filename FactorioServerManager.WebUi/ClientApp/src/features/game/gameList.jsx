@@ -4,8 +4,14 @@ import { GameDetails } from './gameDetails';
 import { useQuery, gql } from '@apollo/client';
 
 const GAME_LIST = gql`
-    query GetGameList {
-        games { id, name, description }
+    query GetGameList { 
+        games {
+            id, name, description, owners {
+                id, displayName, userIcon
+            }, players {
+                id, displayName, userIcon
+            }
+        }
     }
 `
 
