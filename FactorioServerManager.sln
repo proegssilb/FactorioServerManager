@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactorioServerManager.WebUi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorioServerManager.Migrator", "FactorioServerManager.Migrator\FactorioServerManager.Migrator.csproj", "{76659FB0-9482-49E7-A0B2-5F30E87D58A2}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7B06251C-69EE-4C22-A70A-F1CC690E468C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{76659FB0-9482-49E7-A0B2-5F30E87D58A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76659FB0-9482-49E7-A0B2-5F30E87D58A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76659FB0-9482-49E7-A0B2-5F30E87D58A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B06251C-69EE-4C22-A70A-F1CC690E468C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B06251C-69EE-4C22-A70A-F1CC690E468C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B06251C-69EE-4C22-A70A-F1CC690E468C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B06251C-69EE-4C22-A70A-F1CC690E468C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

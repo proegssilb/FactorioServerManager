@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+    factorioservermanager.webui:
+        image: ${DOCKER_REGISTRY-}factorioservermanagerwebui
+        build:
+            context: .
+            dockerfile: FactorioServerManager.WebUi/Dockerfile
+        networks:
+            redis:
+                aliases:
+                    - webui
+            sql:
+                aliases:
+                    - webui
+    redis:
+        image: redis
+        container_name: fsmredis
+        networks: 
+            redis:
+                aliases:
+                    - redis
+    postgres:
+        image: postgres:alpine
+        container_name: fsmsql
+        networks:
+            sql:
+                aliases:
+                    - sql
+
+networks:
+    sql:
+    redis:
