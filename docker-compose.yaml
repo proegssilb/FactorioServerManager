@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  redis:
+    image: redis:alpine
+    networks:
+      redis:
+        aliases:
+          - redis
+    restart: unless-stopped
+  
+  sql:
+    image: postgres:alpine
+    networks:
+      sql:
+        aliases:
+          - sql
+    env_file:
+      - app.env
+  
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000/tcp
+    networks:
+      - redis
+      - sql
+    env_file:
+      - app.env
+    depends_on:
+      - redis
+      - sql
+
+networks:
+  redis: 
+  sql:
