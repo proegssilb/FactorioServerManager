@@ -18,11 +18,16 @@ services:
       - app.env
   
   app:
-    build: .
+    build: 
+      context: .
+      args:
+        envtype: dev
     ports:
       - "8000:8000"
     expose:
       - 8000/tcp
+    volumes:
+      - ./:/usr/src/app
     networks:
       - redis
       - sql
