@@ -3,3 +3,4 @@ daphne >= 3.0, <3.1
 graphene-django >=2.13, <2.14
 psycopg2 >=2.8.6, <2.9
 Twisted[tls,http2] >=20.3, <20.4
+social-auth-app-django >=4.0, <4.1
