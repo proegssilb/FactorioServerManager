@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'social_django',
     'games.apps.GamesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -105,6 +106,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = {
+    'FactorioServerManager.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get('APP_SOCIAL_AUTH0_DOMAIN', '')
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get('APP_SOCIAL_AUTH_AUTH0_KEY', '')
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('APP_SOCIAL_AUTH_AUTH0_SECRET', '')
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/dashboard'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
