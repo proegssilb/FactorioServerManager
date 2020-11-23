@@ -26,5 +26,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        POSTGRES_PASSWORD: thisIsABadPassword!42
+        POSTGRES_USER: bad-postgres-user
+        POSTGRES_DB: bad-db-name
+        POSTGRES_HOST: bad-db-host
+        APP_DEBUG: False
+        APP_SECRET_KEY: badSecretKeykDGOgPkGEIz5U2bi8NeA
       run: |
         python manage.py test
