@@ -17,26 +17,55 @@ services:
     env_file:
       - app.env
   
-  app:
+  api:
     build: 
       context: .
       args:
         envtype: dev
     ports:
-      - "8000:8000"
+      - "8080:8000"
     expose:
       - 8000/tcp
     volumes:
       - ./:/usr/src/app
     networks:
-      - redis
-      - sql
+      redis:
+        aliases: 
+          - api
+      sql:
+        aliases:
+          - api
+      web:
+        aliases:
+          - api
     env_file:
       - app.env
     depends_on:
       - redis
       - sql
 
+  gui:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+      args:
+        envtype: prod
+    ports:
+      - "8000:3000"
+    environment:
+      NGINX_PORT: 3000
+    # volumes:
+    #   - ./frontend:/app
+    expose:
+      - 3000/tcp
+    depends_on:
+      - api
+    networks:
+      web:
+        aliases:
+          - gui
+
 networks:
   redis: 
   sql:
+  web:
