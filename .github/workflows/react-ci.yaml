@@ -1,3 +1,5 @@
+name: React CI
+
 on:
   push:
     branches: [ master ]
