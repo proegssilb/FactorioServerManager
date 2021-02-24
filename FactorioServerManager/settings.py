@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['api']
 
 INSTALLED_APPS = [
     'social_django',
+    'FactorioServerManager',
     'games.apps.GamesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
