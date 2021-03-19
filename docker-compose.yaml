@@ -44,27 +44,6 @@ services:
       - redis
       - sql
 
-  gui:
-    build:
-      dockerfile: Dockerfile
-      context: ./frontend
-      args:
-        envtype: prod
-    ports:
-      - "8000:3000"
-    environment:
-      NGINX_PORT: 3000
-    # volumes:
-    #   - ./frontend:/app
-    expose:
-      - 3000/tcp
-    depends_on:
-      - api
-    networks:
-      web:
-        aliases:
-          - gui
-
 networks:
   redis: 
   sql:

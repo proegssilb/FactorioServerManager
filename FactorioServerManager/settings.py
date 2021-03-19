@@ -26,12 +26,14 @@ SECRET_KEY = os.environ.get('APP_SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('APP_DEBUG', "")) in ('True', 'true', 'yes', 't', '1', 'y')
 
-ALLOWED_HOSTS = ['api']
-
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+CSRF_TRUSTED_ORIGINS = ['gui']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    'graphene_django',
     'social_django',
     'games.apps.GamesConfig',
     'django.contrib.admin',
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,6 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'FactorioServerManager.urls'
+
+GRAPHENE = {
+    'SCHEMA': 'FactorioServerManager.schema.schema'
+}
 
 TEMPLATES = [
     {
@@ -142,3 +149,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+WHITENOISE_ROOT = 'root-files'
+WHITENOISE_INDEX_FILE = True
