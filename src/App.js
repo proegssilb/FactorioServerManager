@@ -1,27 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/navbar'
+import Home from './pages/home'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { preloadUser } from 'reactfire';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const res = fetch('http://localhost:5001/server-manager-3d753/us-central1/helloWorld')
-      .then(res => console.log(res.text()));
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    preloadUser({});
+    return (
+        <Router>
+        <div>
+            <Navbar></Navbar>
+
+            {/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+            <Switch>
+            <Route path="/g">
+                { /* TODO - game list and specific game*/ }
+            </Route>
+            <Route path="/c">
+                { /* TODO - do I even want this?*/ }
+            </Route>
+            <Route path="/">
+                <Home> </Home>
+            </Route>
+            </Switch>
+        </div>
+        </Router>
+    );
 }
 
 export default App;

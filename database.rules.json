@@ -1,0 +1,39 @@
+{
+  "rules": {
+    "users": {
+      "$userId": {
+        ".write": "$userId === auth.uid",
+        "email": { ".read": "true", ".validate": "data.val() === auth.token.email" },
+        "username": { ".read": "true", ".validate": "data.val() === auth.token.name" }
+      }
+    },
+    "games": {
+      "$gameId": {
+          ".read": "data.child('owner').val() === auth.uid || data.child('members').child(auth.uid).exists()",
+          "owner": { ".write": "data.val() === auth.uid", ".validate": "root.child('users').child(newData.val()).exists() && root.child('games').child($gameId).child('members').child(newData.val()).exists()" },
+          "members": {
+            "$memberId": {
+              ".read": "root.child('games').child($gameId).child('members').child(auth.uid).exists()",
+              ".write": "root.child('games').child($gameId).child('members').child(auth.uid).exists()",
+              ".validate": "newData.val() === true"
+            }
+          },
+          "name": { ".validate": "newData.isString()", ".write": "root.child('games').child($gameId).child('members').child(auth.uid).exists()" },
+          "description": { ".validate": "newData.isString()", ".write": "root.child('games').child($gameId).child('members').child(auth.uid).exists()" },
+          "calendar": { 
+            "url": { ".validate": "newData.isString()", ".write": "root.child('games').child($gameId).child('members').child(auth.uid).exists()" },
+            "events": {
+              "$eventid": {
+                ".read": "root.child($gameId).child('members').child(auth.uid).exists()",
+                ".write": "auth.token.system === true"
+              }
+            }
+          },
+        }
+    },
+    "servers": {
+      ".read": "auth.token.system === true",
+      ".write": "auth.token.system === true"
+    }
+  }
+}

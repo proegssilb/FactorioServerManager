@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#github-login-icon, #google-login-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: white;
+}
+
+button {
+    vertical-align: middle;
+}
