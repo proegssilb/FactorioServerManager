@@ -1,0 +1,24 @@
+# permissions for end users to edit factoriogames.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: factoriogame-editor-role
+rules:
+- apiGroups:
+  - fsm.fsm.xenrelay.com
+  resources:
+  - factoriogames
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - fsm.fsm.xenrelay.com
+  resources:
+  - factoriogames/status
+  verbs:
+  - get

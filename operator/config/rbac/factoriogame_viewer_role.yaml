@@ -1,0 +1,20 @@
+# permissions for end users to view factoriogames.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: factoriogame-viewer-role
+rules:
+- apiGroups:
+  - fsm.fsm.xenrelay.com
+  resources:
+  - factoriogames
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - fsm.fsm.xenrelay.com
+  resources:
+  - factoriogames/status
+  verbs:
+  - get
