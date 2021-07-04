@@ -7,4 +7,4 @@ metrics:
 
 leaderElection:
   leaderElect: true
-  resourceName: 811c9dc5.fsm.xenrelay.com
+  resourceName: 811c9dc5.xenrelay.com

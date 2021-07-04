@@ -1,4 +1,4 @@
-domain: fsm.xenrelay.com
+domain: xenrelay.com
 layout:
 - helm.sdk.operatorframework.io/v1
 plugins:
@@ -9,8 +9,8 @@ resources:
 - api:
     crdVersion: v1
     namespaced: true
-  domain: fsm.xenrelay.com
+  domain: xenrelay.com
   group: fsm
-  kind: FactorioGame
-  version: v1alpha1
+  kind: FactorioServer
+  version: v1
 version: "3"

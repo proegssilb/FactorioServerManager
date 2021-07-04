@@ -1,8 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import { useAuth } from 'reactfire'
+import { useAuth, preloadUser } from 'reactfire'
 
 function LoginBox() {
+    preloadUser({});
+    
     const auth = useAuth();
     const googleProvider = new useAuth.GoogleAuthProvider();
     const githubProvider = new useAuth.GithubAuthProvider();

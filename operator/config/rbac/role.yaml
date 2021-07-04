@@ -29,14 +29,14 @@ rules:
   - create
 
 ##
-## Rules for fsm.fsm.xenrelay.com/v1alpha1, Kind: FactorioGame
+## Rules for fsm.xenrelay.com/v1, Kind: FactorioServer
 ##
 - apiGroups:
-  - fsm.fsm.xenrelay.com
+  - fsm.xenrelay.com
   resources:
-  - factoriogames
-  - factoriogames/status
-  - factoriogames/finalizers
+  - factorioservers
+  - factorioservers/status
+  - factorioservers/finalizers
   verbs:
   - create
   - delete
@@ -50,7 +50,8 @@ rules:
   apiGroups:
   - ""
   resources:
-  - "serviceaccounts"
+  - "configmaps"
+  - "persistentvolumeclaims"
   - "services"
 - verbs:
   - "*"

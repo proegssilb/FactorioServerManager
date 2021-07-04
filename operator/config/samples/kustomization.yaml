@@ -1,4 +1,4 @@
 ## Append samples you want in your CSV to this file as resources ##
 resources:
-- fsm_v1alpha1_factoriogame.yaml
+- fsm_v1_factorioserver.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples
