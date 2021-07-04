@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { preloadUser, FirebaseAppProvider } from 'reactfire';
+import { FirebaseAppProvider } from 'reactfire';
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,7 +26,7 @@ function App() {
             }
         });
         return () => mounted = false;
-    }, []);
+    }, [setConfig]);
     
     return (
         <FirebaseAppProvider firebaseConfig={firebaseConfig}>
