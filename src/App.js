@@ -5,31 +5,54 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { preloadUser } from 'reactfire';
+import { FirebaseAppProvider } from 'reactfire';
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-    preloadUser({});
-    return (
-        <Router>
-        <div>
-            <Navbar></Navbar>
+const configUrl = '/__/firebase/init.json';
 
-            {/* A <Switch> looks through its children <Route>s and
-                renders the first one that matches the current URL. */}
-            <Switch>
-            <Route path="/g">
-                { /* TODO - game list and specific game*/ }
-            </Route>
-            <Route path="/c">
-                { /* TODO - do I even want this?*/ }
-            </Route>
-            <Route path="/">
-                <Home> </Home>
-            </Route>
-            </Switch>
-        </div>
-        </Router>
+function loadConfig() {
+    return fetch(configUrl).then(data => data.json());
+}
+
+function App() {
+    const [firebaseConfig, setConfig] = useState(undefined);
+    
+    useEffect(() => {
+        let mounted = true;
+        loadConfig().then(config => {
+            if(mounted) {
+                setConfig(config);
+            }
+        });
+        return () => mounted = false;
+    }, [setConfig]);
+    if (!firebaseConfig) {
+        // TODO: Some kind of loading indicator...
+        return <div />
+    }
+    return (
+        <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+            <Router>
+            <div>
+                <Navbar></Navbar>
+
+                {/* A <Switch> looks through its children <Route>s and
+                    renders the first one that matches the current URL. */}
+                <Switch>
+                <Route path="/g">
+                    { /* TODO - game list and specific game*/ }
+                </Route>
+                <Route path="/c">
+                    { /* TODO - do I even want this?*/ }
+                </Route>
+                <Route path="/">
+                    <Home> </Home>
+                </Route>
+                </Switch>
+            </div>
+            </Router>
+        </FirebaseAppProvider>
     );
 }
 

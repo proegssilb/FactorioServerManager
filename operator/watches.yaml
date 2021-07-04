@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: fsm.xenrelay.com
+  version: v1
+  kind: FactorioServer
+  chart: helm-charts/factorio-server-charts
+#+kubebuilder:scaffold:watch
