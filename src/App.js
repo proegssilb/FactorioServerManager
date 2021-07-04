@@ -27,7 +27,10 @@ function App() {
         });
         return () => mounted = false;
     }, [setConfig]);
-    
+    if (!firebaseConfig) {
+        // TODO: Some kind of loading indicator...
+        return <div />
+    }
     return (
         <FirebaseAppProvider firebaseConfig={firebaseConfig}>
             <Router>
