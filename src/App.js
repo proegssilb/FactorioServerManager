@@ -16,7 +16,7 @@ function loadConfig() {
 }
 
 function App() {
-    const {firebaseConfig, setConfig} = useState({});
+    const [firebaseConfig, setConfig] = useState(undefined);
     
     useEffect(() => {
         let mounted = true;
